@@ -7,6 +7,8 @@ pipeline {
                 checkout scm
                 // Compile the main class
                 sh 'javac -d target -sourcepath src/main/java src/main/java/com/example/math/Calculator.java'
+	        // Report test results
+		 junit 'target/surefire-reports/*.xml'
             }
         }
         stage('Test') {
